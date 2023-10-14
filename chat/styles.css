@@ -1,0 +1,50 @@
+body { 
+    background-color: #282c34; 
+    color: #fff;
+ }
+ 
+ #chat { 
+    height: 400px;
+    overflow: auto; 
+    border-radius: 8px; 
+    border: 1px solid grey; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    font-family: Arial, sans-serif; 
+    font-size: 14px; 
+    background-color: #282c34; 
+    color: #fff;
+ }
+ 
+ #input-message { 
+    width: calc(100% - 60px); 
+    height: 50px; 
+    border-radius: 8px; 
+    border: 1px solid grey; 
+    padding: 5px; 
+    font-family: Arial, sans-serif; 
+    font-size: 14px; 
+    background-color: #282c34; 
+    color: #fff;
+ }
+ 
+ #submit-button { 
+    -webkit-appearance: none; 
+    height: 58px; 
+    width: 50px; 
+    margin-left: 10px; 
+    border-radius: 8px; 
+    border: none;
+    background-color: #007bff; 
+    color: #fff; 
+    font-size: 16px;
+ }
+ 
+ .assistant {
+    color: #6495ED; 
+  }
+  
+  .user {
+    color: #32CD32; 
+  }
+  
