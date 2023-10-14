@@ -20,7 +20,7 @@ function postMessage() {
 function appendMessage(role, content) {
   var paragraph = document.createElement('p');
   paragraph.classList.add(role);
-  paragraph.textContent = role.toUpperCase() + ": " + content;
+  paragraph.textContent = role + ": " + content;
   document.getElementById('chat').append(paragraph);
 }
 
@@ -49,5 +49,5 @@ async function callOpenAI(message){
   const content = await response.json();
   const botMessage = content.choices[0].message.content;
   conversation.push({role: 'assistant', content: botMessage});
-  appendMessage('assistant', botMessage);
+  appendMessage('Assistant', botMessage);
 }
