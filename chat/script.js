@@ -40,7 +40,7 @@ async function callOpenAI(message){
       'Authorization': 'Bearer ' + "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",
     },
     body: JSON.stringify({
-      'model': 'gpt-3.5-turbo',
+      'model': 'gpt-4',
       'messages': conversation,
       'temperature': 0.7,
     }),
