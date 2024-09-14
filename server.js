@@ -58,18 +58,14 @@ app.post('/api/send-text', async (req, res) => {
 
   try {
     const query = 'INSERT INTO chat_sessions (session_id, prompt, response) VALUES (1001,"test","testalso")';
-    await pool.query(query, values);
-    res.status(200).send('Data saved successfully');
+    await pool.query(query);
+    console.log(data);
+    res.json({ content: data });
   } catch (err) {
     console.error('Error executing query:', err);
     res.status(500).send('Error saving data');
   }
-
-  console.log(data);
-  res.json({ content: data });
 });
-
-
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
