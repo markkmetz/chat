@@ -76,6 +76,10 @@ form.addEventListener('submit', function (e) {
   postMessage();
 });
 
+function loadlastsession() {
+  console.log("hello!");
+}
+
 let conversation = [];
 let sessionid = null;
 let userid = 1000;
