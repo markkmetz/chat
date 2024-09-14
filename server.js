@@ -16,10 +16,10 @@ const port = 3000;
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  user: 'your_username',
+  user: 'gpt',
   host: 'localhost',
-  database: 'your_database',
-  password: 'your_password',
+  database: 'gpt',
+  password: 'test1234',
   port: 5432,
 });
 
@@ -57,7 +57,7 @@ app.post('/api/send-text', async (req, res) => {
   data.sesssionid = 1000;
 
   try {
-    const query = 'INSERT INTO chat_sessions (session_id, prompt, response) VALUES (1001,"test","testalso")';
+    const query = 'INSERT INTO chat_sessions VALUES (1001,"test","testalso")';
     await pool.query(query);
     console.log(data);
     res.json({ content: data });
