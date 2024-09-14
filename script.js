@@ -3,10 +3,14 @@ const messageInput = document.getElementById('input-message');
 const chat = document.getElementById('chat');
 
 function postMessage() {
+  
   const message = messageInput.value;
-  chat.innerHTML += `<span class="user">User: ${message}</span><br/>`;
-  messageInput.value = "";
-  callOpenAI(message);
+  if(length(message) > 0){
+    chat.innerHTML += `<span class="user">User: ${message}</span><br/>`;
+    messageInput.value = "";
+    callOpenAI(message);
+  }
+  
 }
 
 function appendMessage(role, content) {
