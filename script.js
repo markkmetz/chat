@@ -65,6 +65,7 @@ function appendMessage2(role, content) {
   }
 
 
+
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     postMessage();
