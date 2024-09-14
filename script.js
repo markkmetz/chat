@@ -2,12 +2,12 @@ const form = document.getElementById('input-form');
 const messageInput = document.getElementById('input-message');
 const chat = document.getElementById('chat');
 
-document.getElementById('input-message').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        postMessage();
-    }
-});
+// document.getElementById('input-message').addEventListener('keypress', function(e) {
+//     if (e.key === 'Enter' && !e.shiftKey) {
+//         e.preventDefault();
+//         postMessage();
+//     }
+// });
 
 function postMessage() {
   const message = messageInput.value;
