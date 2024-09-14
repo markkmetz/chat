@@ -63,7 +63,6 @@ function appendMessage2(role, content) {
   
     document.getElementById('chat').append(card);
   }
-  
 
 
 form.addEventListener('submit', function(e) {
