@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/send-text', async (req, res) => {
   console.log("received data");
-  const { message, conversation } = req.body;
+  const { message, conversation, session, user } = req.body;
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -45,10 +45,10 @@ app.post('/api/send-text', async (req, res) => {
   });
 
   const data = await response.json();
+  data.sesssionid = 1000;
   console.log(data);
   res.json({ content: data });
 });
-
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
