@@ -10,7 +10,6 @@ function postMessage() {
     messageInput.value = "";
     callOpenAI(message);
   }
-  
 }
 
 function appendMessage(role, content) {
