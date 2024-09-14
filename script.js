@@ -6,6 +6,7 @@ function postMessage() {
   
   const message = messageInput.value;
   if(message.length > 0){
+    appendMessage2('user',message);
     chat.innerHTML += `<span class="user">User: ${message}</span><br/>`;
     messageInput.value = "";
     callOpenAI(message);
