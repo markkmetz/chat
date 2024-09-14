@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/send-text', async (req, res) => {
   const { message, conversation } = req.body;
+  console.log("received data");
 
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
