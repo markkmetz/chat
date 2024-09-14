@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
-cont 
+const apikey = ''
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -12,8 +12,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/send-text', async (req, res) => {
-  const { message, conversation } = req.body;
   console.log("received data");
+  const { message, conversation } = req.body;
 
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
