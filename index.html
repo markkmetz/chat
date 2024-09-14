@@ -1,74 +1,89 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="bootstrap.min.css">
-        <link rel="stylesheet" href="style.css">
-        </head>
-    <body>
-        
 
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Chat</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Home
-              <span class="visually-hidden">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">GPT Models</a>
-              <a class="dropdown-item" href="#">History</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
+<head>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Chat</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Settings</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">GPT Models</a>
+                            <a class="dropdown-item" href="#">History</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-sm-2" type="search" placeholder="Search">
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-  
-  <div><h1>Not Chat GPT..</h1></div>
-  <div><h3>make sure you pay me for api ussage...</h3></div>
-  
-  <div class="card border-primary mb-3" style="margin-left: 1%; margin-right: 10%;">
-    <div class="card-header">
-        <img src="avatar1.jpg" alt="Avatar" class="avatar">
-        <h5>User</h5>
-    </div>
-    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
+        </div>
+    </nav>
 
-  <div class="card border-secondary mb-3" style="margin-left: 10%; margin-right: 1%;">
-    <div class="card-header text-end">
-        <img src="avatar2.bmp" alt="Avatar" class="avatar">
-        <h5>GPT</h5>
+    <div>
+        <h1>Not Chat GPT..</h1>
     </div>
-    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div>
+        <h3>make sure you pay me for api ussage...</h3>
     </div>
+    <div id="chat">
+        <div class="card border-primary mb-3" style="margin-left: 1%; margin-right: 10%;">
+            <div class="card-header">
+                <img src="avatar1.jpg" alt="Avatar" class="avatar">
+                <h5>User</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+
+        <div class="card border-secondary mb-3" style="margin-left: 10%; margin-right: 1%;">
+            <div class="card-header text-end">
+                <img src="avatar2.bmp" alt="Avatar" class="avatar">
+                <h5>GPT</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
     </div>
-  
-    </body>
+    <form id="input-form">
+        <textarea id="input-message"></textarea>
+        <button id="submit-button">Send</button>
+    </form>
+</body>
+
 </html>
