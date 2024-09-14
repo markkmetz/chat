@@ -57,7 +57,7 @@ app.post('/api/send-text', async (req, res) => {
   data.sesssionid = 1000;
 
   try {
-    const query = "INSERT INTO chat_sessions (session_id, prompt, response) VALUES (? ,? ,? )";
+    const query = "INSERT INTO chat_sessions (session_id, prompt, response) VALUES ($1, $2, $3)";
     values = [1001,message,'teststill']
     await pool.query(query, values);
     console.log(data);
