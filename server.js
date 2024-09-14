@@ -6,7 +6,7 @@ const port = 3000;
 const apikey = ''
 
 const corsOptions = {
-  origin: 'http:/192.168.1.191', // Replace with your frontend's domain
+  origin: 'http://192.168.1.191', // Replace with your frontend's domain
   optionsSuccessStatus: 200
 };
 

@@ -33,7 +33,7 @@ let conversation = [];
 
 async function callOpenAI(message){
   conversation.push({role: 'user', content: message});
-  const response = await fetch('http://192.168.1.1:3000/api/send-text', {
+  const response = await fetch('http://192.168.1.191:3000/api/send-text', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
