@@ -16,10 +16,10 @@ function appendMessage(role, content) {
   document.getElementById('chat').append(paragraph);
 }
 
-// form.addEventListener('submit', function(e) {
-//   e.preventDefault();
-//   //postMessage();
-// });
+document.getElementById('submit-button').addEventListener('click', function(event) {
+    event.preventDefault();
+    console.log("wtf");
+});
 
 let conversation = [];
 
