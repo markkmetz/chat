@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/send-text', async (req, res) => {
   console.log("received data");
-  //const { message, conversation } = req.body;
+  const { message, conversation } = req.body;
   console.log(req.body);
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
@@ -38,7 +38,11 @@ app.post('/api/send-text', async (req, res) => {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + apikey,
     },
-    body: req.body
+    body: JSON.stringify({
+      'model': 'gpt-4o-mini',
+      'messages': conversation,
+      'temperature': 0.7,
+    })
   });
 
   const data = await response.json();
