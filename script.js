@@ -5,7 +5,7 @@ const chat = document.getElementById('chat');
 function postMessage() {
   
   const message = messageInput.value;
-  if(length(message) > 0){
+  if(message.length > 0){
     chat.innerHTML += `<span class="user">User: ${message}</span><br/>`;
     messageInput.value = "";
     callOpenAI(message);
@@ -20,10 +20,11 @@ function appendMessage(role, content) {
   document.getElementById('chat').append(paragraph);
 }
 
-document.getElementById('submit-button').addEventListener('click', function(event) {
-    event.preventDefault();
-    console.log("wtf");
-});
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    postMessage();
+  });
+  
 
 let conversation = [];
 
