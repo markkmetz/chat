@@ -13,6 +13,15 @@ const cors = require ('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  user: 'your_username',
+  host: 'localhost',
+  database: 'your_database',
+  password: 'your_password',
+  port: 5432,
+});
 
 const corsOptions = {
   origin: 'http://192.168.1.191', // Replace with your frontend's domain
@@ -46,9 +55,21 @@ app.post('/api/send-text', async (req, res) => {
 
   const data = await response.json();
   data.sesssionid = 1000;
+
+  try {
+    const query = 'INSERT INTO chat_sessions (session_id, prompt, response) VALUES (1001,"test","testalso")';
+    await pool.query(query, values);
+    res.status(200).send('Data saved successfully');
+  } catch (err) {
+    console.error('Error executing query:', err);
+    res.status(500).send('Error saving data');
+  }
+
   console.log(data);
   res.json({ content: data });
 });
+
+
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
