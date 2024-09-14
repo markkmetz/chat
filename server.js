@@ -1,9 +1,18 @@
+const fs = require('fs');
+const path = require('path');
+
+// Read the API key from key.txt
+const keyPath = path.join(__dirname, 'key.txt');
+const apikey = fs.readFileSync(keyPath, 'utf8').trim();
+
+console.log(`Your API key is: ${apikey}`);
+
+
 const express = require('express');
 const cors = require ('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
-const apikey = ''
 
 const corsOptions = {
   origin: 'http://192.168.1.191', // Replace with your frontend's domain
@@ -27,7 +36,7 @@ app.post('/api/send-text', async (req, res) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + "abc1234",
+      'Authorization': 'Bearer ' + apikey,
     },
     body: req.body
   });
