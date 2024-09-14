@@ -58,7 +58,7 @@ app.post('/api/send-text', async (req, res) => {
 
   try {
     const query = "INSERT INTO chat_sessions (session_id, prompt, response) VALUES ($1, $2, $3)";
-    values = [1001,message,'teststill']
+    values = [1001,message,conversation[conversation.length -1]]
     await pool.query(query, values);
     console.log(data);
     res.json({ content: data });
