@@ -7,7 +7,7 @@ function postMessage() {
   const message = messageInput.value;
   if(message.length > 0){
     appendMessage2('user',message);
-    chat.innerHTML += `<span class="user">User: ${message}</span><br/>`;
+    //chat.innerHTML += `<span class="user">User: ${message}</span><br/>`;
     messageInput.value = "";
     callOpenAI(message);
   }
@@ -88,5 +88,5 @@ async function callOpenAI(message){
     const data = await response.json();
     const botMessage = data.content.choices[0].message.content;
     conversation.push({role: 'assistant', content: botMessage});
-    appendMessage('Assistant', botMessage);
+    appendMessage2('Assistant', botMessage);
   }
