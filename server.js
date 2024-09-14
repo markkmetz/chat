@@ -29,10 +29,11 @@ app.post('/api/send-text', async (req, res) => {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + "abc1234",
     },
-    req
+    body: req.body
   });
 
   const data = await response.json();
+  console.log(data);
   res.json({ content: data });
 });
 
