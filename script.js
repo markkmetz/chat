@@ -39,6 +39,5 @@ async function callOpenAI(message){
     });
   
     const data = await response.json();
-    conversation.push({ role: 'assistant', content: data.content });
+    conversation.push({ role: 'assistant', content: data.content.choices[0].message.content });
   }
-
