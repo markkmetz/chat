@@ -95,7 +95,7 @@ async function idk(){
 
   try {
     const query = "INSERT INTO topic (chat_session_id, topic) VALUES ($1, $2)";
-    values = [1001,message,data.choices[0].message.content];
+    values = [1001,data.choices[0].message.content];
     await pool.query(query, values);
     res.json({ content: data });
   } catch (err) {
