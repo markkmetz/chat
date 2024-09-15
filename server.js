@@ -93,7 +93,7 @@ async function idk(){
   const data = await response.json();
 
   try {
-    console.log(data.choices[0].message.content);
+    console.log(data);
     const query = "INSERT INTO topic (chat_session_id, topic) VALUES ($1, $2)";
     values = [1001,data.choices[0].message.content];
     await pool.query(query, values);
