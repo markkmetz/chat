@@ -74,8 +74,8 @@ async function idk(chatid){
   //const { message, conversation } = req.body;
   conversation = [];
   conversation.push({ role: 'system', content: "you generate a single keyword based on the input so that this data can be recalled in a sql query." });
-  const query = "SELECT response FROM chat_sessions WHERE id = 53;";
-  const result = await pool.query(query);
+  const query = "SELECT response FROM chat_sessions WHERE id = $1;";
+  const result = await pool.query(query,chatid);
   console.log(result.rows[0]);
   conversation.push({role: 'user', content: result.rows[0].response});
   
