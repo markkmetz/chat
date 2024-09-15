@@ -73,7 +73,7 @@ async function idk(chatid){
   console.log(chatid)
   //const { message, conversation } = req.body;
   conversation = [];
-  conversation.push({ role: 'system', content: "you generate a comma seperated keyword list based on the input so that this data can be recalled in a sql query." });
+  conversation.push({ role: 'system', content: "you generate a single keyword based on the input so that this data can be recalled in a sql query." });
   const query = "SELECT response FROM chat_sessions WHERE id = 53;";
   const result = await pool.query(query);
   console.log(result.rows[0]);
@@ -97,12 +97,10 @@ async function idk(chatid){
   try {
     console.log(data);
     const query = "INSERT INTO topic (chat_session_id, topic) VALUES ($1, $2)";
-    values = [53,data.choices[0].message.content];
+    values = [chatid,data.choices[0].message.content];
     await pool.query(query, values);
-    res.json({ content: data });
   } catch (err) {
     console.error('Error executing query:', err);
-    res.status(500).send('Error saving data');
   }
 };
 
