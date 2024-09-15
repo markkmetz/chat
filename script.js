@@ -81,6 +81,7 @@ function loadlastsession() {
 }
 
 let conversation = [];
+conversation.push({role: 'system', content: "you are a helpful ai assistant. responses are thoughtful, but usually short and summarized like human speech."})
 let sessionid = null;
 let userid = 1000;
 
