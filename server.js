@@ -74,7 +74,7 @@ async function idk(){
   conversation = [];
   conversation.push({ role: 'system', content: "you generate a comma seperated keyword list based on the input so that this data can be recalled in a sql query." });
   const query = "SELECT response FROM chat_sessions WHERE id = 53;";
-  const result = await pool.query(query, values);
+  const result = await pool.query(query);
   conversation.push({role: 'user', content: result});
 
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
