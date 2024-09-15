@@ -40,7 +40,6 @@ app.get('/', (req, res) => {
 app.post('/api/send-text', async (req, res) => {
   console.log("received data");
   const { message, conversation, session, user } = req.body;
-  console.log(conversation);
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -77,7 +76,7 @@ async function idk(){
   const query = "SELECT response FROM chat_sessions WHERE id = 53;";
   const result = await pool.query(query);
   conversation.push({role: 'user', content: result});
-
+  console.log(conversation);
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
