@@ -9,7 +9,7 @@ console.log(`Your API key is: ${apikey}`);
 
 
 const express = require('express');
-const cors = require ('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
@@ -58,7 +58,7 @@ app.post('/api/send-text', async (req, res) => {
 
   try {
     const query = "INSERT INTO chat_sessions (session_id, prompt, response) VALUES ($1, $2, $3) RETURNING id;";
-    values = [1001,message,data.choices[0].message.content];
+    values = [1001, message, data.choices[0].message.content];
     const result = await pool.query(query, values);
     res.json({ content: data });
     await idk(result.rows[0].id);
@@ -68,17 +68,17 @@ app.post('/api/send-text', async (req, res) => {
   }
 });
 
-async function idk(chatid){
+async function idk(chatid) {
   console.log("summing data");
   console.log(chatid)
   //const { message, conversation } = req.body;
   conversation = [];
-  conversation.push({ role: 'system', content: "you generate a single keyword based on the input so that this data can be recalled in a sql query." });
+  conversation.push({ role: 'system', content: "you respond with only a single word. This is a keyword based on the input so that this data can be recalled in a sql query." });
   const query = "SELECT response FROM chat_sessions WHERE id = $1;";
-  const result = await pool.query(query,[chatid]);
+  const result = await pool.query(query, [chatid]);
   console.log(result.rows[0]);
-  conversation.push({role: 'user', content: result.rows[0].response});
-  
+  conversation.push({ role: 'user', content: result.rows[0].response });
+
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -97,7 +97,7 @@ async function idk(chatid){
   try {
     console.log(data);
     const query = "INSERT INTO topic (chat_session_id, topic) VALUES ($1, $2)";
-    values = [chatid,data.choices[0].message.content];
+    values = [chatid, data.choices[0].message.content];
     await pool.query(query, values);
   } catch (err) {
     console.error('Error executing query:', err);

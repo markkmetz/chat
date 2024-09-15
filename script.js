@@ -61,7 +61,10 @@ function appendMessage2(role, content) {
   card.appendChild(cardHeader);
   card.appendChild(cardBody);
 
-  document.getElementById('chat').append(card);
+  const chatcontainer = document.getElementById('chat');
+  chatcontainer.append(card);
+  chatcontainer.scrollTop = chatcontainer.scrollHeight;
+
 }
 
 document.getElementById('input-message').addEventListener('keypress', function (e) {
@@ -81,7 +84,7 @@ function loadlastsession() {
 }
 
 let conversation = [];
-conversation.push({role: 'system', content: "you are a helpful ai assistant. responses are thoughtful, but usually short and summarized like human speech."})
+conversation.push({ role: 'system', content: "you are a helpful ai assistant. responses are thoughtful, but usually short and summarized like human speech." })
 let sessionid = null;
 let userid = 1000;
 
