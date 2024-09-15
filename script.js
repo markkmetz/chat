@@ -101,3 +101,4 @@ async function callOpenAI(message) {
   conversation.push({ role: 'assistant', content: botMessage });
   appendMessage2('assistant', botMessage);
 }
+

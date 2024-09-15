@@ -67,6 +67,42 @@ app.post('/api/send-text', async (req, res) => {
   }
 });
 
+app.get('/api/summarize', async (req, res) => {
+  console.log("summing data");
+  //const { message, conversation } = req.body;
+  conversation = [];
+  conversation.push({ role: 'system', content: "you generate a comma seperated keyword list based on the input so that this data can be recalled in a sql query." });
+  const query = "SELECT response FROM chat_sessions WHERE id = 53;";
+  const result = await pool.query(query, values);
+  conversation.push({role: 'user', content: result});
+
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + apikey,
+    },
+    body: JSON.stringify({
+      'model': 'gpt-4o-mini',
+      'messages': conversation,
+      'temperature': 0.7,
+    })
+  });
+
+  const data = await response.json();
+
+  try {
+    const query = "INSERT INTO topic (chat_session_id, topic) VALUES ($1, $2)";
+    values = [1001,message,data.choices[0].message.content];
+    await pool.query(query, values);
+    res.json({ content: data });
+  } catch (err) {
+    console.error('Error executing query:', err);
+    res.status(500).send('Error saving data');
+  }
+});
+
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
