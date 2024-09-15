@@ -59,15 +59,17 @@ app.post('/api/send-text', async (req, res) => {
   try {
     const query = "INSERT INTO chat_sessions (session_id, prompt, response) VALUES ($1, $2, $3)";
     values = [1001,message,data.choices[0].message.content];
-    await pool.query(query, values);
+    const result = await pool.query(query, values);
+    console.log(result);
     res.json({ content: data });
+    await idk();
   } catch (err) {
     console.error('Error executing query:', err);
     res.status(500).send('Error saving data');
   }
 });
 
-app.get('/api/summarize', async (req, res) => {
+async function idk(){
   console.log("summing data");
   //const { message, conversation } = req.body;
   conversation = [];
@@ -100,7 +102,7 @@ app.get('/api/summarize', async (req, res) => {
     console.error('Error executing query:', err);
     res.status(500).send('Error saving data');
   }
-});
+};
 
 
 app.listen(port, () => {
