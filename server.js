@@ -60,7 +60,6 @@ app.post('/api/send-text', async (req, res) => {
     const query = "INSERT INTO chat_sessions (session_id, prompt, response) VALUES ($1, $2, $3)";
     values = [1001,message,data.choices[0].message.content];
     const result = await pool.query(query, values);
-    console.log(result);
     res.json({ content: data });
     await idk();
   } catch (err) {
@@ -94,6 +93,7 @@ async function idk(){
   const data = await response.json();
 
   try {
+    console.log(data.choices[0].message.content);
     const query = "INSERT INTO topic (chat_session_id, topic) VALUES ($1, $2)";
     values = [1001,data.choices[0].message.content];
     await pool.query(query, values);
