@@ -57,19 +57,20 @@ app.post('/api/send-text', async (req, res) => {
   data.sesssionid = 1000;
 
   try {
-    const query = "INSERT INTO chat_sessions (session_id, prompt, response) VALUES ($1, $2, $3)";
+    const query = "INSERT INTO chat_sessions (session_id, prompt, response) VALUES ($1, $2, $3) RETURNING id;";
     values = [1001,message,data.choices[0].message.content];
     const result = await pool.query(query, values);
     res.json({ content: data });
-    await idk();
+    await idk(result.rows[0].id);
   } catch (err) {
     console.error('Error executing query:', err);
     res.status(500).send('Error saving data');
   }
 });
 
-async function idk(){
+async function idk(chatid){
   console.log("summing data");
+  console.log(chatid)
   //const { message, conversation } = req.body;
   conversation = [];
   conversation.push({ role: 'system', content: "you generate a comma seperated keyword list based on the input so that this data can be recalled in a sql query." });
@@ -96,7 +97,7 @@ async function idk(){
   try {
     console.log(data);
     const query = "INSERT INTO topic (chat_session_id, topic) VALUES ($1, $2)";
-    values = [1001,data.choices[0].message.content];
+    values = [53,data.choices[0].message.content];
     await pool.query(query, values);
     res.json({ content: data });
   } catch (err) {
