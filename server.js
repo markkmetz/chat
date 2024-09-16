@@ -24,7 +24,7 @@ const pool = new Pool({
 });
 
 const corsOptions = {
-  origin: ['https://proxy.kmetzenterprises.com','https://192.168.1.191'], // Replace with your frontend's domain
+  origin: ['http://proxy.kmetzenterprises.com','https://192.168.1.191'], // Replace with your frontend's domain
   optionsSuccessStatus: 200
 };
 
@@ -118,5 +118,5 @@ app.post('/api/login', (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Server running at https://proxy.kmetzenetprises.com:${port}`);
+  console.log(`Server running at http://proxy.kmetzenterprises.com:${port}`);
 });

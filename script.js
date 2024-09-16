@@ -79,7 +79,7 @@ document.getElementById('input-message').addEventListener('keypress', function (
 });
 
 document.getElementById('loginButton').addEventListener('click', async () => {
-  const response = await fetch('https://proxy.kmetzenterprises.com:3000/', {
+  const response = await fetch('http://proxy.kmetzenterprises.com:3000/', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -115,7 +115,7 @@ let userid = 1000;
 
 async function callOpenAI(message) {
   conversation.push({ role: 'user', content: message });
-  const response = await fetch('https://proxy.kmetzenterprises.com:3000/api/send-text', {
+  const response = await fetch('http://proxy.kmetzenterprises.com:3000/api/send-text', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
