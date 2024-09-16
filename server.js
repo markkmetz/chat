@@ -24,7 +24,7 @@ const pool = new Pool({
 });
 
 const corsOptions = {
-  origin: 'https://proxy.kmetzenterprises.com', // Replace with your frontend's domain
+  origin: ['https://proxy.kmetzenterprises.com','https://192.168.1.191'], // Replace with your frontend's domain
   optionsSuccessStatus: 200
 };
 
