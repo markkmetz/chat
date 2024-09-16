@@ -64,7 +64,7 @@ function appendMessage2(role, content) {
   const chatcontainer = document.getElementById('chat');
   chatcontainer.append(card);
   chatcontainer.scrollTop = chatcontainer.scrollHeight;
-  
+
   requestAnimationFrame(() => {
     chatcontainer.scrollTop = chatcontainer.scrollHeight;
   });
@@ -77,6 +77,27 @@ document.getElementById('input-message').addEventListener('keypress', function (
     postMessage();
   }
 });
+
+document.getElementById('loginButton').addEventListener('click', async () => {
+  const response = await fetch('https://proxy.kmetzenterprises.com:3000/', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          username: document.getElementById('useremail').value,
+          password: document.getElementById('userpassword').value
+      })
+  });
+
+  if (response.ok) {
+      const data = await response.json();
+      console.log('Login successful:', data);
+  } else {
+      console.error('Login failed');
+  }
+});
+
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -94,7 +115,7 @@ let userid = 1000;
 
 async function callOpenAI(message) {
   conversation.push({ role: 'user', content: message });
-  const response = await fetch('http://192.168.1.191:3000/api/send-text', {
+  const response = await fetch('https://proxy.kmetzenterprises.com:3000/api/send-text', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

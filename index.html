@@ -43,8 +43,18 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-sm-2" type="search" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    <fieldset>
+                        <div class="d-flex">
+                        <div class="my-2 my-sm-0 px-2 ">
+                          <input type="email" class="form-control" id="useremail" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="my-2 my-sm-0 px-2">
+                          <input type="password" class="form-control" id="userpassword" placeholder="Password" autocomplete="off">
+                        </div>
+                        <div class=" my-2 my-sm-0 px-2 ">
+                            <button id="loginButton" class="form-control btn btn-secondary" type="submit">Login</button>
+                        </div>
+                        </fieldset>
                 </form>
             </div>
         </div>

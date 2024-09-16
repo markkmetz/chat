@@ -24,7 +24,7 @@ const pool = new Pool({
 });
 
 const corsOptions = {
-  origin: 'http://192.168.1.191', // Replace with your frontend's domain
+  origin: 'https://proxy.kmetzenterprises.com', // Replace with your frontend's domain
   optionsSuccessStatus: 200
 };
 
@@ -104,7 +104,19 @@ async function idk(chatid) {
   }
 };
 
+app.post('/api/login', (req, res) => {
+  console.log('req');
+  const { username, password } = req.body;
+
+  // Replace this with your actual authentication logic
+  if (username === 'mark' && password === '1234') {
+      res.status(200).json({ message: 'Login successful' });
+  } else {
+      res.status(401).json({ message: 'Invalid credentials' });
+  }
+});
+
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at https://proxy.kmetzenetprises.com:${port}`);
 });
