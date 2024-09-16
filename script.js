@@ -64,6 +64,10 @@ function appendMessage2(role, content) {
   const chatcontainer = document.getElementById('chat');
   chatcontainer.append(card);
   chatcontainer.scrollTop = chatcontainer.scrollHeight;
+  
+  requestAnimationFrame(() => {
+    chatcontainer.scrollTop = chatcontainer.scrollHeight;
+  });
 
 }
 
